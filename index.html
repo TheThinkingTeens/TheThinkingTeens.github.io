@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Thinking Teens</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fff, #e0e0e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 20%;
+            right: 20%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #f0f0f0, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textShimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes textShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin: 2rem 0;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        /* Podcast Section */
+        .podcast-section {
+            padding: 4rem 0;
+        }
+
+        .podcast-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .podcast-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .podcast-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .podcast-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .podcast-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .podcast-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .podcast-art {
+            width: 150px;
+            height: 150px;
+            border-radius: 20px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .podcast-card:hover .podcast-art {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .podcast-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .podcast-info p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .podcast-platforms {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .platform-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-decoration: none;
+        }
+
+        .platform-link:hover {
+            transform: translateY(-3px) scale(1.1);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .platform-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .platforms-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-right: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .podcast-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .podcast-platforms {
+                justify-content: center;
+            }
+
+            .podcast-art {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="nav">
+                <div class="logo-section">
+                    <img src="logo.png" alt="The Thinking Teens Logo" class="logo">
+                    <span class="brand-name">The Thinking Teens</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#podcasts">Podcasts</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="home" class="hero">
+                <div class="hero-content">
+                    <h1>The Thinking Teens</h1>
+                    <p>Two teenagers exploring topics the world should know about more. Join us as we dive deep into conversations that matter.</p>
+                    <a href="#podcasts" class="cta-button">Listen Now</a>
+                </div>
+            </section>
+
+            <section id="about" class="about">
+                <h2>Who We Are</h2>
+                <p>We're two teenagers who talk about topics the world should know about more. Our mission is to bring fresh perspectives to important conversations and spark meaningful discussions among our generation and beyond.</p>
+            </section>
+
+            <section id="podcasts" class="podcast-section">
+                <h2>Our Latest Podcast</h2>
+                <div class="podcast-card">
+                    <div class="podcast-content">
+                        <img src="ROR.png" alt="Reality of Reels Podcast Art" class="podcast-art">
+                        <div class="podcast-info">
+                            <h3>Reality of Reels [ Trailer ]</h3>
+                            <p>Diving into the reality behind social media reels and how they're affecting people's perception of reality, mental health, and daily lives. Talking about it's addictive nature and ways to overcome it.</p>
+                            <div class="podcast-platforms">
+                                <span class="platforms-label">Check it out on:</span>
+                                <a href="https://open.spotify.com/show/1snUgIzFA9G0HbAtVvbhxv" class="platform-link" aria-label="Listen on Spotify">
+                                    <img src="spotify.png" alt="Spotify" class="platform-icon">
+                                </a>
+                                <a href="https://podcasts.apple.com/us/podcast/the-reality-of-reels-|-trailer/id1819320830" class="platform-link" aria-label="Listen on Apple Podcasts">
+                                    <img src="apple_podcasts.png" alt="Apple Podcasts" class="platform-icon">
+                                </a>
+                                <a href="https://www.youtube.com/watch?v=8M13BmiwuuI" class="platform-link" aria-label="Listen on YouTube">
+                                    <img src="yt.png" alt="YouTube" class="platform-icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer id="contact">
+            <div class="footer-content">
+                <p>Email: <a href="mailto:thethinkingteens01@gmail.com" style="color: #fff; text-decoration: underline;">thethinkingteens01@gmail.com</a></p>
+                <p>&copy; 2025 The Thinking Teens</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.2)';
+                nav.style.backdropFilter = 'blur(20px)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.1)';
+                nav.style.backdropFilter = 'blur(10px)';
+            }
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.about, .podcast-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
