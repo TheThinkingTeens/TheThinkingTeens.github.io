@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <title>The Thinking Teens</title>
     <meta name="google-site-verification" content="ZVIWBK6WIl7PND4fmAZJN9h-N5VLp07De4cfBsmjYPg" />
     <style>
@@ -13,8 +18,9 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            font-family: 'League Spartan', -apple-system, BlinkMacSystemFont, sans-serif;
+            /*background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);*/
+            background: linear-gradient(135deg, #538388 4%, #141663 64%);
             min-height: 100vh;
             color: #fff;
             overflow-x: hidden;
@@ -46,27 +52,81 @@
         .logo-section {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.2rem;
+        }
+
+        .logo-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .logo-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(100, 180, 255, 0.5), rgba(255, 255, 255, 0.2));
+            animation: logoGlow 3s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes logoGlow {
+            0% {
+                opacity: 0.55;
+                box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.25);
+            }
+
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 22px 6px rgba(130, 200, 255, 0.45);
+            }
         }
 
         .logo {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            transition: transform 0.3s ease;
+            width: 70px;
+            height: 70px;
+            border-radius: 14px;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.35s cubic-bezier(.34, 1.56, .64, 1), box-shadow 0.35s ease;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
         }
 
-        .logo:hover {
-            transform: scale(1.1) rotate(5deg);
+        .logo-wrapper:hover .logo {
+            transform: scale(1.12) rotate(6deg);
+            box-shadow: 0 10px 36px rgba(130, 200, 255, 0.5);
+        }
+
+        .logo-wrapper:hover::before {
+            animation-play-state: paused;
+            opacity: 1;
+            box-shadow: 0 0 28px 8px rgba(130, 200, 255, 0.6);
         }
 
         .brand-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, #fff, #e0e0e0);
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(90deg, #ffffff 0%, #b8e0ff 50%, #ffffff 100%);
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: brandShimmer 4s linear infinite;
+            text-shadow: none;
+        }
+
+        @keyframes brandShimmer {
+            0% {
+                background-position: 0% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
         }
 
         .nav-links {
@@ -116,7 +176,7 @@
             left: 20%;
             width: 300px;
             height: 300px;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
             border-radius: 50%;
             animation: float 6s ease-in-out infinite;
         }
@@ -128,14 +188,21 @@
             right: 20%;
             width: 200px;
             height: 200px;
-            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
             border-radius: 50%;
             animation: float 8s ease-in-out infinite reverse;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
         }
 
         .hero-content {
@@ -155,8 +222,15 @@
         }
 
         @keyframes textShimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
         }
 
         .hero p {
@@ -190,7 +264,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.5s;
         }
 
@@ -232,6 +306,9 @@
         /* Podcast Section */
         .podcast-section {
             padding: 4rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
 
         .podcast-section h2 {
@@ -343,6 +420,100 @@
             font-weight: 500;
         }
 
+        /* Coming Soon card */
+        .podcast-card.soon {
+            opacity: 0.82;
+            border-color: rgba(255, 255, 255, 0.08);
+            background: rgba(0, 0, 0, 0.18);
+        }
+
+        .podcast-card.soon::before {
+            background: linear-gradient(90deg, #9b59b6, #3498db, #9b59b6);
+        }
+
+        .soon-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: linear-gradient(135deg, #9b59b6, #3498db);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            margin-bottom: 0.8rem;
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        .soon-badge::before {
+            content: '';
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #fff;
+            animation: dotBlink 1.2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(155, 89, 182, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 0 8px rgba(155, 89, 182, 0);
+            }
+        }
+
+        @keyframes dotBlink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        .soon-platforms {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .soon-platform-chip {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            padding: 0.35rem 0.75rem;
+            font-size: 0.82rem;
+            font-weight: 500;
+            opacity: 0.75;
+            cursor: default;
+            user-select: none;
+        }
+
+        .soon-platform-chip img {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+        }
+
+        .podcast-art.soon-art {
+            filter: brightness(0.85) saturate(0.7);
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -418,12 +589,15 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <header>
             <nav class="nav">
                 <div class="logo-section">
-                    <img src="logo.png" alt="The Thinking Teens Logo" class="logo">
+                    <div class="logo-wrapper">
+                        <img src="logo.jpg" alt="The Thinking Teens Logo" class="logo">
+                    </div>
                     <span class="brand-name">The Thinking Teens</span>
                 </div>
                 <ul class="nav-links">
@@ -439,33 +613,68 @@
             <section id="home" class="hero">
                 <div class="hero-content">
                     <h1>The Thinking Teens</h1>
-                    <p>Two teenagers exploring topics the world should know about more. Join us as we dive deep into conversations that matter.</p>
+                    <p>Two teenagers exploring topics the world should know about more. Join us as we dive deep into
+                        conversations that matter.</p>
                     <a href="#podcasts" class="cta-button">Listen Now</a>
                 </div>
             </section>
 
             <section id="about" class="about">
                 <h2>Who We Are</h2>
-                <p>We're two teenagers who talk about topics the world should know about more. Our mission is to bring fresh perspectives to important conversations and spark meaningful discussions among our generation and beyond.</p>
+                <p>We're two teenagers who talk about topics the world should know about more. Our mission is to bring
+                    fresh perspectives to important conversations and spark meaningful discussions among our generation
+                    and beyond.</p>
             </section>
 
             <section id="podcasts" class="podcast-section">
-                <h2>Our Latest Podcast</h2>
+                <h2>Our Podcasts</h2>
+
+                <!-- Coming Soon Podcast -->
+                <div class="podcast-card soon">
+                    <div class="podcast-content">
+                        <img src="SOON.png" alt="Upcoming Podcast Art" class="podcast-art soon-art">
+                        <div class="podcast-info">
+                            <div class="soon-badge">Coming Soon</div>
+                            <h3>Stay Tuned</h3>
+                            <p>Our next podcast is in the works | Follow us on YouTube for more updates through
+                                community posts and videos.</p>
+                            <div class="soon-platforms">
+                                <span class="platforms-label">Will be releasing on:</span>
+                                <span class="soon-platform-chip">
+                                    <img src="spotify.png" alt="Spotify"> Spotify
+                                </span>
+                                <span class="soon-platform-chip">
+                                    <img src="yt.png" alt="YouTube Music"> YouTube Music
+                                </span>
+                                <span class="soon-platform-chip">
+                                    <img src="apple_podcasts.png" alt="Apple Podcasts"> Apple Podcasts
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="podcast-card">
                     <div class="podcast-content">
                         <img src="ROR.png" alt="Reality of Reels Podcast Art" class="podcast-art">
                         <div class="podcast-info">
                             <h3>Reality of Reels</h3>
-                            <p>Diving into the reality behind social media reels and how they're affecting people's perception of reality, mental health, and daily lives. Talking about it's addictive nature and ways to overcome it. This podcast is not available on Apple Podcasts as of now, we might have it up at a later point in time.</p>
+                            <p>Diving into the reality behind social media reels and how they're affecting people's
+                                perception of reality, mental health, and daily lives. Talking about it's addictive
+                                nature and ways to overcome it. This podcast is not available on Apple Podcasts as of
+                                now, we might have it up at a later point in time.</p>
                             <div class="podcast-platforms">
                                 <span class="platforms-label">Listen on:</span>
-                                <a href="https://open.spotify.com/show/1snUgIzFA9G0HbAtVvbhxv" class="platform-link" aria-label="Listen on Spotify">
+                                <a href="https://open.spotify.com/show/1snUgIzFA9G0HbAtVvbhxv" class="platform-link"
+                                    aria-label="Listen on Spotify">
                                     <img src="spotify.png" alt="Spotify" class="platform-icon">
                                 </a>
-                                <a href="https://www.youtube.com/playlist?list=PLr7Mz7wHOEoVSoyzRWQX3opVl39Ub3gTA" class="platform-link" aria-label="Listen on YouTube">
+                                <a href="https://www.youtube.com/playlist?list=PLr7Mz7wHOEoVSoyzRWQX3opVl39Ub3gTA"
+                                    class="platform-link" aria-label="Listen on YouTube">
                                     <img src="yt.png" alt="YouTube" class="platform-icon">
                                 </a>
-                                <a href="https://podcasts.apple.com/us/podcast/reality-of-reels/id1819793161" class="platform-link" aria-label="Listen on YouTube">
+                                <a href="https://podcasts.apple.com/us/podcast/reality-of-reels/id1819793161"
+                                    class="platform-link" aria-label="Listen on Apple Podcasts">
                                     <img src="apple_podcasts.png" alt="Apple Podcasts" class="platform-icon">
                                 </a>
                             </div>
@@ -477,7 +686,8 @@
 
         <footer id="contact">
             <div class="footer-content">
-                <p>Email: <a href="mailto:thethinkingteens01@gmail.com" style="color: #fff; text-decoration: underline;">thethinkingteens01@gmail.com</a></p>
+                <p>Email: <a href="mailto:thethinkingteens01@gmail.com"
+                        style="color: #fff; text-decoration: underline;">thethinkingteens01@gmail.com</a></p>
                 <p>&copy; 2026 The Thinking Teens</p>
             </div>
         </footer>
@@ -533,4 +743,5 @@
         });
     </script>
 </body>
+
 </html>
