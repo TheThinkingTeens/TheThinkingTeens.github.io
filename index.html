@@ -420,99 +420,7 @@
             font-weight: 500;
         }
 
-        /* Coming Soon card */
-        .podcast-card.soon {
-            opacity: 0.82;
-            border-color: rgba(255, 255, 255, 0.08);
-            background: rgba(0, 0, 0, 0.18);
-        }
 
-        .podcast-card.soon::before {
-            background: linear-gradient(90deg, #9b59b6, #3498db, #9b59b6);
-        }
-
-        .soon-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            background: linear-gradient(135deg, #9b59b6, #3498db);
-            color: #fff;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            padding: 0.3rem 0.8rem;
-            border-radius: 50px;
-            margin-bottom: 0.8rem;
-            animation: badgePulse 2s ease-in-out infinite;
-        }
-
-        .soon-badge::before {
-            content: '';
-            display: inline-block;
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #fff;
-            animation: dotBlink 1.2s ease-in-out infinite;
-        }
-
-        @keyframes badgePulse {
-
-            0%,
-            100% {
-                box-shadow: 0 0 0 0 rgba(155, 89, 182, 0.4);
-            }
-
-            50% {
-                box-shadow: 0 0 0 8px rgba(155, 89, 182, 0);
-            }
-        }
-
-        @keyframes dotBlink {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.3;
-            }
-        }
-
-        .soon-platforms {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-            margin-top: 0.5rem;
-        }
-
-        .soon-platform-chip {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 8px;
-            padding: 0.35rem 0.75rem;
-            font-size: 0.82rem;
-            font-weight: 500;
-            opacity: 0.75;
-            cursor: default;
-            user-select: none;
-        }
-
-        .soon-platform-chip img {
-            width: 18px;
-            height: 18px;
-            object-fit: contain;
-        }
-
-        .podcast-art.soon-art {
-            filter: brightness(0.85) saturate(0.7);
-        }
 
         /* Footer */
         footer {
@@ -629,26 +537,34 @@
             <section id="podcasts" class="podcast-section">
                 <h2>Our Podcasts</h2>
 
-                <!-- Coming Soon Podcast -->
-                <div class="podcast-card soon">
+                <!-- RAMageddon Podcast -->
+                <div class="podcast-card">
                     <div class="podcast-content">
-                        <img src="SOON.png" alt="Upcoming Podcast Art" class="podcast-art soon-art">
+                        <img src="RAMageddon.png" alt="RAMageddon Podcast Art" class="podcast-art">
                         <div class="podcast-info">
-                            <div class="soon-badge">Coming Soon</div>
-                            <h3>Stay Tuned</h3>
-                            <p>Our next podcast is in the works | Follow us on YouTube for more updates through
-                                community posts and videos.</p>
-                            <div class="soon-platforms">
-                                <span class="platforms-label">Will be releasing on:</span>
-                                <span class="soon-platform-chip">
-                                    <img src="spotify.png" alt="Spotify"> Spotify
-                                </span>
-                                <span class="soon-platform-chip">
-                                    <img src="yt.png" alt="YouTube Music"> YouTube Music
-                                </span>
-                                <span class="soon-platform-chip">
-                                    <img src="apple_podcasts.png" alt="Apple Podcasts"> Apple Podcasts
-                                </span>
+                            <h3>RAMageddon</h3>
+                            <p>RAMageddon: Why Is RAM Getting Unaffordable? In a world driven by technology, one
+                                essential component is quietly becoming a luxury — RAM. Due to the hike of prices, it
+                                has caused an impact in various ways.</p>
+                            <div class="podcast-platforms">
+                                <span class="platforms-label">Listen on:</span>
+                                <a href="https://open.spotify.com/show/1DeImpSDLfcN32WLYXYNsE" class="platform-link"
+                                    target="_blank" rel="noopener" aria-label="Listen on Spotify">
+                                    <img src="spotify.png" alt="Spotify" class="platform-icon">
+                                </a>
+                                <a href="https://www.youtube.com/watch?v=pWKTNp8h0Tw" class="platform-link"
+                                    target="_blank" rel="noopener" aria-label="Watch on YouTube">
+                                    <img src="yt.png" alt="YouTube" class="platform-icon">
+                                </a>
+                                <a href="https://podcasts.apple.com/us/podcast/ramageddon-why-is-ram-getting-unaffordable/id1890487853"
+                                    class="platform-link" target="_blank" rel="noopener"
+                                    aria-label="Listen on Apple Podcasts">
+                                    <img src="apple_podcasts.png" alt="Apple Podcasts" class="platform-icon">
+                                </a>
+                                <a href="https://rss.com/podcasts/ramageddon-why-is-ram-getting-unaffordable/#episodes"
+                                    class="platform-link" target="_blank" rel="noopener" aria-label="RSS Feed">
+                                    <img src="rss.png" alt="RSS" class="platform-icon">
+                                </a>
                             </div>
                         </div>
                     </div>
